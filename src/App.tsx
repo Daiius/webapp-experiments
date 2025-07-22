@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 
 import { Header } from './Header'
 import { Footer } from './Footer'
@@ -8,17 +8,32 @@ import { TermsPage } from './TermsPage'
 import { BlogsPage } from './BlogsPage'
 import { MobileOrderPage } from './MobileOrderPage'
 
-const tabs = {
-  'ブログ': <BlogsPage />,
-  '用語集': <TermsPage />,
-  'モバイルオーダー':
-      <div className={clsx(
-        'w-80 h-120',
-        'm-auto',
-        'border border-slate-400',
-      )}>
-        <MobileOrderPage />
+const tabNames = ['ブログ', '用語集', 'モバイルオーダー'] as const
+
+type TabNames = typeof tabNames[number]
+
+const tabs: {
+  [tabNames in TabNames]: {
+    pageContent: ReactNode,
+    tabContent: ReactNode,
+  }
+} = {
+  'ブログ': {
+    pageContent: <BlogsPage />,
+    tabContent: 'ブログ',
+  },
+  '用語集': {
+    pageContent: <TermsPage />,
+    tabContent: '用語集',
+  },
+  'モバイルオーダー': {
+    pageContent: <MobileOrderPage />,
+    tabContent: 
+      <div className='flex flex-wrap justify-center'>
+        <div>モバイル</div>
+        <div>オーダー</div>
       </div>,
+  }
 }
 
 function App() {
@@ -32,24 +47,24 @@ function App() {
     )}>
       <Header />
       <div className='flex flex-row'>
-        {Object.keys(tabs).map(tab =>
+        {Object.entries(tabs).map(([tabName, tabData]) =>
           <button
-            key={tab}
+            key={tabName}
             className={clsx(
               'basis-0 grow',
               'p-2 border-b border-r border-t last:border-r border-slate-300',
               'text-center',
-              tab === selectedTab && 'bg-slate-300 font-bold',
+              tabName === selectedTab && 'bg-slate-300 font-bold',
               'hover:bg-slate-200',
             )}
-            onClick={() => setSelectedTab(tab as keyof typeof tabs)}
+            onClick={() => setSelectedTab(tabName as keyof typeof tabs)}
           >
-            {tab}
+            {tabData.tabContent}
           </button>
         )}
       </div>
-      <main className='grow'>
-        {tabs[selectedTab]}
+      <main className='grow flex w-full items-center justify-center'>
+        {tabs[selectedTab].pageContent}
       </main>
       <Footer />
     </div>
