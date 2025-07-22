@@ -6,7 +6,7 @@ import { Logo } from './Logo'
 import { LargeButton } from './LargeButton'
 
 export const InputPage = ({
-  setOrderState,
+  //setOrderState,
 }: PageProps) => (
   <>
     <div className='w-full h-38 flex flex-col-reverse items-center'>
