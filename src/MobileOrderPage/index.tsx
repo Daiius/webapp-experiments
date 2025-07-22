@@ -60,17 +60,22 @@ export const MobileOrderPage = ({
   const [orderState, setOrderState] = useState<OrderStates>('start')
   const data = orderData[orderState]
   return (
-    <div className={clsx(
-      'flex flex-col items-center',
-      'h-full',
-      className,
-    )}>
-      <Header message={data.header} />
-      <main className='grow flex flex-col w-full items-center overflow-y-auto'>
-        {data.render?.({ setOrderState })}
-      </main>
-      <Footer orderState={orderState}/>
+    <div className='flex self-center justify-self-center'>
+      <div className={clsx(
+        'flex flex-col items-center',
+        'w-80 h-120',
+        'border border-slate-300',
+        'self-center justify-self-center',
+        className,
+      )}>
+        <Header message={data.header} />
+        <main className='grow flex flex-col w-full items-center overflow-y-auto'>
+          {data.render?.({ setOrderState })}
+        </main>
+        <Footer orderState={orderState}/>
+      </div>
     </div>
+
   )
 } 
 
