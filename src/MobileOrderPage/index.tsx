@@ -60,12 +60,11 @@ export const MobileOrderPage = ({
   const [orderState, setOrderState] = useState<OrderStates>('start')
   const data = orderData[orderState]
   return (
-    <div className='flex self-center justify-self-center'>
+    <div className='flex items-center justify-center'>
       <div className={clsx(
         'flex flex-col items-center',
         'w-80 h-120',
         'border border-slate-300',
-        'self-center justify-self-center',
         className,
       )}>
         <Header message={data.header} />
