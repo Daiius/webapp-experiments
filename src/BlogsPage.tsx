@@ -92,7 +92,7 @@ const ViewAllLink = ({
 )
 
 export const BlogsPage = () => (
-  <section id='BLOG' className='p-4'>
+  <section id='BLOG' className='w-full'>
     <h1 className={clsx(
       'text-3xl font-semibold',
       'text-left sm:text-center',
@@ -101,7 +101,7 @@ export const BlogsPage = () => (
     </h1>
     {Object.entries(blogs).map(([blogName, articles]) =>
       <div key={blogName} className='mb-2'>
-        <div className='py-2 flex flex-row'>
+        <div className='p-2 flex flex-row'>
           <h2 className='text-lg font-semibold'>
             {blogName}
           </h2>
@@ -109,7 +109,7 @@ export const BlogsPage = () => (
         </div>
         <div className={clsx(
           'flex flex-row gap-4 justify-evenly',
-          ' overflow-x-auto [scrollbar-width:none]',
+          'overflow-x-auto [scrollbar-width:none]',
         )}>
           {articles.map(article =>
             <BlogArticleLink {...article} />
