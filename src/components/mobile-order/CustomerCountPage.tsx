@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 
-import type { SetOrderState } from './common'
+import type { SetOrderState } from '@/data/mobile-order'
 
-import { LargeButton } from './LargeButton'
+import { LargeButton } from '@/components/mobile-order/LargeButton'
 
 const buttonDataList = [
   '1 人', '2 人', '3 人', '4 人', '5 人', '6 人', '7 人', '8 人', '9人以上'

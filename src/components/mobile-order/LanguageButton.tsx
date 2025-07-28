@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { GlobeIcon } from  '../icons/GlobeIcon'
+import { GlobeIcon } from  '@/components/icons/GlobeIcon'
 
 export const LanguageButton = ({
   className,

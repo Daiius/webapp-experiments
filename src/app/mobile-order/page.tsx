@@ -1,21 +1,23 @@
+'use client'
+
 import clsx from 'clsx'
 
-import { 
-  useState, 
-  type Dispatch,
-  type SetStateAction,
-  type ReactNode,
+import { useState } from 'react'
+import type {
+  Dispatch,
+  SetStateAction,
+  ReactNode,
 } from 'react'
 
 
-import { Header } from './Header'
-import { Footer } from './Footer'
+import { Header } from '@/components/mobile-order/Header'
+import { Footer } from '@/components/mobile-order/Footer'
 
-import type { OrderStates } from './common'
+import type { OrderStates } from '@/data/mobile-order'
 
-import { StartPage } from './StartPage'
-import { CustomerCountPage } from './CustomerCountPage'
-import { InputPage } from './InputPage'
+import { StartPage } from '@/components/mobile-order/StartPage'
+import { CustomerCountPage } from '@/components/mobile-order/CustomerCountPage'
+import { InputPage } from '@/components/mobile-order/InputPage'
 
 const orderData: {
   [orderState in OrderStates]: { 
@@ -52,11 +54,7 @@ const orderData: {
   }
 }
 
-export const MobileOrderPage = ({
- className,
-}: {
- className?: string,
-}) => {
+export default function MobileOrderPage() {
   const [orderState, setOrderState] = useState<OrderStates>('start')
   const data = orderData[orderState]
   return (
@@ -65,7 +63,6 @@ export const MobileOrderPage = ({
         'flex flex-col items-center',
         'w-80 h-120',
         'border border-slate-300',
-        className,
       )}>
         <Header message={data.header} />
         <main className='grow flex flex-col w-full items-center overflow-y-auto'>

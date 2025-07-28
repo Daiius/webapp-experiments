@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import type { PageProps } from './common'
+import type { PageProps } from '@/data/mobile-order'
 
 import { Logo } from './Logo'
 import { LargeButton } from './LargeButton'
