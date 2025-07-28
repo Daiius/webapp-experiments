@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import type { OrderStates } from './common'
+import type { OrderStates } from '@/data/mobile-order'
 
 export const Footer = ({
   orderState,
