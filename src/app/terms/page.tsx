@@ -20,16 +20,15 @@ const experimentalScrollFunction = () => {
 
 export default function TermsPage() {
   const [dummy, _] = useState<boolean>(false)
-  //const [mounted, setMounted] = useState<boolean>(false)
-
-  //useEffect(() => setMounted(true), [])
+  const [mounted, setMounted] = useState<boolean>(false)
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
-    //if (mounted) {
+    if (mounted) {
       setTimeout(() => {
         experimentalScrollFunction()
       }, 100)
-    //}
+    }
   }, [dummy])
 
   return (
@@ -39,23 +38,27 @@ export default function TermsPage() {
       <StickableSearchBar />
       <div className='p-2 flex flex-wrap gap-2'>
         {indexes.map(index => 
-          <div 
+          <button 
             key={index}
             className={clsx(
               'border border-slate-300 rounded-md',
+              'hover:bg-slate-100',
               'p-2',
               'text-nowrap',
+              'cursor-pointer',
             )}
+            onClick={() =>{
+              const element = document.getElementById(index)
+              element?.scrollIntoView({ behavior: 'smooth' })
+            }}
           >
-            <a href={`#${index}`}>
-              {index} 行
-            </a>
-          </div>
+            <span> {index} 行</span>
+          </button>
         )}
       </div>
       <div className='w-full'>
         {indexes.map(index =>
-          <section key={index} id={index} className='scroll-mt-16'>
+          <section key={index} id={index} className='scroll-mt-32'>
             <div className='bg-slate-200 p-1 top-32 sticky'>{index}行</div>
             <div className='flex flex-col sm:flex-row sm:flex-wrap sm:justify-between'>
               {[...new Array(10)].map((_, i) => 
@@ -76,7 +79,6 @@ export default function TermsPage() {
           </section>
         )}
       </div>
-      Body
     </div>
   )
 }
