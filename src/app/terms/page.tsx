@@ -20,15 +20,11 @@ const experimentalScrollFunction = () => {
 
 export default function TermsPage() {
   const [dummy, _] = useState<boolean>(false)
-  const [mounted, setMounted] = useState<boolean>(false)
-  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
-    if (mounted) {
-      setTimeout(() => {
-        experimentalScrollFunction()
-      }, 100)
-    }
+    setTimeout(() => {
+      experimentalScrollFunction()
+    }, 100)
   }, [dummy])
 
   return (
