@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=0.1.0"
   },
   "dependencies": {
     "clsx": "^2.1.1",
